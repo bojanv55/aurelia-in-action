@@ -1,0 +1,29 @@
+<template>
+  <require from="./book-list"></require>
+  <require from="./heading.html"></require>
+  <require from="./book-stats"></require>
+  <heading text.bind="'bookz'"></heading>
+<div class="card">
+  <div class="card-block">
+  <form class="form-inline" submit.trigger="addBook()">
+    <label for="book-title"></label>
+    <!-- value.bind="bookTitle & throttle:500" -->
+    <!-- value.bind="bookTitle & debounce:500" -->
+    <!-- value.bind="bookTitle & updateTrigger:'blur'" -->
+    <input class="form-control" value.bind="bookTitle" id="book-title" type="text" placeholder="book title...">
+    <!-- <input class="form-control" blur.trigger="refreshSignal()" value.bind="bookTitle" id="book-title" type="text" placeholder="book title..."> -->
+    <input class="btn btn-success tap-right" type="submit" value="add" disabled.one-way="titleIsEmpty">
+    <!-- <input class="btn btn-success tap-right" type="submit" value="add" disabled.bind="titleIsEmpty() & signal: 'title-is-empty-signal'"> -->
+  </form>
+  </div>
+</div>
+
+  <hr />
+
+  <book-list books.bind="books"></book-list>
+
+  <!--
+  <book-stats if.bind="books.length>0" books.bind="books" original-number-of-books.one-time="books.length">
+  </book-stats>
+  -->
+</template>

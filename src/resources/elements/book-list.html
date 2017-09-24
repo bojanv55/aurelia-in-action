@@ -1,0 +1,48 @@
+<template>
+  <require from="./book"></require>
+  <require from="../attributes/tooltip"></require>
+  <require from="../value-converters/book-status"></require>
+
+  <require from="../value-converters/filter"></require>
+  <require from="../value-converters/search-bold"></require>
+  <require from="../value-converters/istakni"></require>
+
+  <div class="card">
+    <div class="card-header form-inline">
+      <div class="input-group">
+        <span class="input-group-addon" id="filter-icon">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+        <input type="text" class="form-control" placeholder="filter" aria-describedby="filter-icon"
+               value.bind="searchTerm">
+      </div>
+    </div>
+  </div>
+
+  <ul class="books list-group list-group-flush">
+    <book containerless repeat.for="book of books | filter:searchTerm"
+          book.bind="book" search-term.bind="searchTerm"></book>
+  </ul>
+
+  <!--
+
+
+
+  <ul class="books list-group list-group-flush">
+    <li class="list-group-item ${$even ? 'book-even' : ''}" repeat.for="book of books | filter:searchTerm">
+
+      <div class="col-10" innerhtml.one-way="book.title | searchBold:searchTerm | istakni"></div>
+      <span class="col-1">
+        <i class="fa ${book.Id | bookStatus}" aria-hidden="true"></i>
+      </span>
+      <div class="col-1">
+        <span class="remove-button" click.delegate="removeBook($index)"
+              tooltip="title:Remove book from list; placement: right">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </span>
+      </div>
+
+    </li>
+  </ul>
+  -->
+</template>
