@@ -54,7 +54,7 @@ export class EditBook{
   }
 
   attached(){
-    this.bscs = this.ea.subscribe('book-save-complete-${this.book.Id}', () => this.bookSaveComplete());
+    this.bscs = this.ea.subscribe(`book-save-complete-${this.book.Id}`, () => this.bookSaveComplete());
   }
 
   toggleEditMode(){
