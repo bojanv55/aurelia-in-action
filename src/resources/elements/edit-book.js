@@ -39,7 +39,7 @@ export class EditBook{
     this.temporaryBook = this.book;
 
     //==
-    this.starRatingViewModel.applyRating(this.temporaryBook.rating);
+    this.starRating.applyRating(this.temporaryBook.rating);
 
     this.toggleEditMode();
   }
