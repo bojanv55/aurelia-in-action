@@ -9,10 +9,15 @@ export class EditBook{
 
   constructor(ea){
     this.ea = ea;
+    //==
+    this.rcl = e => this.temporaryBook.rating = e.rating;
   }
 
   bind(){
     this.resetTempBook();
+
+    //==
+    this.ratingElement.addEventListener("change", this.rcl);
   }
 
   editModeChanged(newMode, oldMode){
@@ -32,6 +37,10 @@ export class EditBook{
 
   cancel(){
     this.temporaryBook = this.book;
+
+    //==
+    this.starRatingViewModel.applyRating(this.temporaryBook.rating);
+
     this.toggleEditMode();
   }
 
@@ -63,5 +72,8 @@ export class EditBook{
 
   detached(){
     this.bscs.dispose();
+
+    //==
+    this.ratingElement.removeEventListener("change", this.rcl);
   }
 }

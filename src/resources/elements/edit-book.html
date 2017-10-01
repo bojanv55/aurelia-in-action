@@ -1,5 +1,6 @@
 <template>
   <require from="../value-converters/date-format"></require>
+  <require from="./star-rating"></require>
   <div class="edit-book ${editMode ? 'visible' : 'hidden'}">
     <div class="wrapper">
       <div class="row">
@@ -30,6 +31,11 @@
             </span>
           </button>
         </div>
+
+        <star-rating view-model.ref="starRating"
+                     ref="ratingElement"
+                     rating.bind="temporaryBook.rating">
+        </star-rating>
       </form>
     </div>
   </div>

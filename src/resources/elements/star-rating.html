@@ -1,0 +1,12 @@
+<template>
+  <ul class="ratings">
+    <li repeat.for="star of stars"
+        click.delegate="rate($index)"
+        mouseover.deleagate="mouseOver($index) & debounce:100"
+        mouseout.delegate="mouseOut($index) & debounce:100">
+      <span class="star ${star.displayType === '' ? 'rated' : ''}">
+        <i class="fa fa-star${star.displayType}"></i>
+      </span>
+    </li>
+  </ul>
+</template>
