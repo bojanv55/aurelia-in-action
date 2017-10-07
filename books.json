@@ -1,14 +1,23 @@
 [
   {
     "Id":1,
-    "title":"Knjiga1"
+    "title":"Knjiga1",
+    "rating":3,
+    "posjeduje":false,
+    "genre":1
   },
   {
     "Id":2,
-    "title":"Knjiga2"
+    "title":"Knjiga2",
+    "rating":2,
+    "posjeduje":false,
+    "genre":2
   },
   {
     "Id":3,
-    "title":"Knjiga3"
+    "title":"Knjiga3",
+    "rating":1,
+    "posjeduje":true,
+    "genre":1
   }
 ]

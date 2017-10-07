@@ -36,6 +36,23 @@
                      ref="ratingElement"
                      rating.bind="temporaryBook.rating">
         </star-rating>
+        <hr/>
+        <div class="form-inline row">
+          <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" checked.bind="temporaryBook.posjeduje" />
+              Posjeduje?
+            </label>
+          </div>
+          <div class="form-group">
+            <div class="form-check form-check-inline" repeat.for="genre of genres">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="genre" model.bind="genre"
+                       checked.bind="selectedGenre">${genre.name}</label>
+            </div>
+          </div>
+        </div>
+        <hr/>
       </form>
     </div>
   </div>

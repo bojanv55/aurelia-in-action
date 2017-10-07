@@ -66,5 +66,7 @@ export class Books {
 
   bind(){
     this.bookApi.getBooks().then(savedBooks => this.books = savedBooks);
+    this.bookApi.getGenres().then(genres => this.genres = genres);
+    this.bookApi.getShelves().then(shelves => this.shelves = shelves);
   }
 }

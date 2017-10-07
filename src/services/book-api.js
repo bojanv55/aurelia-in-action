@@ -5,6 +5,17 @@ import {inject} from 'aurelia-framework';
 export class BookApi{
   constructor(httpClient){
     this.httpClient = httpClient;
+    this.simulatedLatency = 500;
+  }
+
+  getShelves(){
+    let shelves = ["Jedan", "Dva", "Tri"];
+    return this.simulatedFetch(shelves);
+  }
+
+  getGenres(){
+    let genres = [{id:1, name:"Marko"},{id:2,name:"Neko2"}];
+    return this.simulatedFetch(genres);
   }
 
   getBooks(){
@@ -15,11 +26,15 @@ export class BookApi{
       });
   }
 
-  saveBook(book){
+  simulatedFetch(result){
     return new Promise(resolve => {
       setTimeout(()=> {
-        resolve(book);
-      }, 1000);
+        resolve(result);
+      }, this.simulatedLatency);
     });
+  }
+
+  saveBook(book){
+    return this.simulatedFetch(book);
   }
 }
