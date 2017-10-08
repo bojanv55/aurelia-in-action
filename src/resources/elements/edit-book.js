@@ -15,6 +15,7 @@ export class EditBook{
     //==
     this.rcl = e => this.temporaryBook.rating = e.rating;
     this.saved = false;
+    this.editingShelves = false;
   }
 
   bind(){
