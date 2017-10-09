@@ -90,6 +90,11 @@
             "main": "./moment.js",
             "path": "../node_modules/moment",
             "resources": []
+          },
+          {
+            "name": "aurelia-validation",
+            "path": "../node_modules/aurelia-validation/dist/amd",
+            "main": "aurelia-validation"
           }
         ]
       }

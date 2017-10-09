@@ -1,17 +1,21 @@
-import {bindable, inject, computedFrom} from 'aurelia-framework';
+import {bindable, inject, computedFrom, NewInstance} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import lodash from 'lodash';
+import _ from 'lodash';
+import {BootstrapFormRenderer} from '../../renderers/bootstrap-form-renderer';
+import {ValidationRules, ValidationController} from 'aurelia-validation';
 
-@inject(EventAggregator)
+@inject(EventAggregator, NewInstance.of(ValidationController))
 export class EditBook{
   @bindable editMode;
   @bindable book;
   @bindable shelves;
   @bindable genres;
-  temporaryBook = {};
+  temporaryBook = new Book();
 
-  constructor(ea){
+  constructor(ea, controller){
     this.ea = ea;
+    this.controller = controller;
+    this.controller.addRenderer(new BootstrapFormRenderer());
     //==
     this.rcl = e => this.temporaryBook.rating = e.rating;
     this.saved = false;
@@ -44,7 +48,8 @@ export class EditBook{
   }
 
   @computedFrom('temporaryBook.title', 'temporaryBook.description',
-    'temporaryBook.rating','temporaryBook.posjeduje', 'temporaryBook.genre', 'saved', 'temporaryBook.shelves')
+    'temporaryBook.rating','temporaryBook.posjeduje', 'temporaryBook.genre', 'saved',
+    'temporaryBook.shelves', 'temporaryBook.timesRead')
   get canSave(){
     //return this.temporaryBook && !_.isEqual(this.temporaryBook, this.book);
     if(!this.temporaryBook.Id) return false;
@@ -74,8 +79,12 @@ export class EditBook{
   }
 
   save(){
-    this.loading = true;
-    this.publishBookSavedEvent();
+    this.controller.validate().then(result => {
+      if(result.valid){
+        this.loading = true;
+        this.publishBookSavedEvent();
+      }
+    });
   }
 
   bookSaveComplete(){
@@ -106,3 +115,11 @@ export class EditBook{
     this.ratingElement.removeEventListener("change", this.rcl);
   }
 }
+
+export class Book{
+  title='';
+  description='';
+}
+
+ValidationRules.customRule('zeroOrPositiveInt', (value, obj) => value>=0, 'vise od 0');
+ValidationRules.ensure(a => a.title).required().on(Book);
