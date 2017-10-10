@@ -1,8 +1,18 @@
 import {bindable, inject, computedFrom, NewInstance} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import _ from 'lodash';
 import {BootstrapFormRenderer} from '../../renderers/bootstrap-form-renderer';
 import {ValidationRules, ValidationController} from 'aurelia-validation';
+import _ from 'lodash';
+
+export class Bookz{
+
+  constructor(){
+    ValidationRules.ensure(b => b.title).required().minLength(20).maxLength(20).withMessage('krka').on(this);
+  }
+
+  title='';
+  description='';
+}
 
 @inject(EventAggregator, NewInstance.of(ValidationController))
 export class EditBook{
@@ -10,9 +20,11 @@ export class EditBook{
   @bindable book;
   @bindable shelves;
   @bindable genres;
-  temporaryBook = new Book();
+  temporaryBook = new Bookz();
+  controller = null;
 
   constructor(ea, controller){
+
     this.ea = ea;
     this.controller = controller;
     this.controller.addRenderer(new BootstrapFormRenderer());
@@ -66,11 +78,12 @@ export class EditBook{
 
 
   resetTempBook(){
-    this.temporaryBook = Object.assign({}, this.book);
+    //this.temporaryBook = Object.assign({}, this.book);
+    Object.assign(this.temporaryBook, this.book);
   }
 
   cancel(){
-    this.temporaryBook = this.book;
+    this.temporaryBook = Object.assign(new Book(), this.book);
 
     //==
     this.starRating.applyRating(this.temporaryBook.rating);
@@ -116,12 +129,5 @@ export class EditBook{
   }
 }
 
-export class Book{
-  title='';
-  description='';
-  rating=0;
-  posjeduje=false;
-}
-
 //ValidationRules.customRule('zeroOrPositiveInt', (value, obj) => value>=0, 'vise od 0');
-ValidationRules.ensureObject().satisfies(a => a.title.length > 5).withMessage('krka').on(Book);
+
