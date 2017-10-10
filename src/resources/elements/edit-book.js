@@ -7,11 +7,15 @@ import _ from 'lodash';
 export class Bookz{
 
   constructor(){
-    ValidationRules.ensure(b => b.title).required().minLength(20).maxLength(20).withMessage('krka').on(this);
+    ValidationRules.customRule("neki", (val, obj)=> val===null || val===undefined || (Number.isInteger(val)) || val>=0, "mora bit vece od 0");
+    ValidationRules.ensure(b => b.title).required().minLength(5).withMessage('krka')
+      .ensure(b => b.timesRead).required().satisfiesRule("neki")
+      .on(this);
   }
 
   title='';
   description='';
+  timesRead=0;
 }
 
 @inject(EventAggregator, NewInstance.of(ValidationController))
