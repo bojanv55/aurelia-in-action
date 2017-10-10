@@ -1,11 +1,10 @@
-
 export class App {
   configureRouter(config, router){
     this.router = router;
-    config.title = 'my-books';
+    config.title = 'Markets';
     config.map([
-      {route: ["", "home"], name: 'home', moduleId: "./resources/elements/index"},
-      {route: "books", name: 'books', moduleId: "./resources/elements/books"}
+      {route: ["", "home"], name: 'home', moduleId: PLATFORM.moduleName("./resources/elements/index")},
+      {route: "markets", name: 'markets', moduleId: PLATFORM.moduleName("./resources/elements/books")}
     ]);
   }
 }

@@ -119,7 +119,9 @@ export class EditBook{
 export class Book{
   title='';
   description='';
+  rating=0;
+  posjeduje=false;
 }
 
-ValidationRules.customRule('zeroOrPositiveInt', (value, obj) => value>=0, 'vise od 0');
-ValidationRules.ensure(a => a.title).required().on(Book);
+//ValidationRules.customRule('zeroOrPositiveInt', (value, obj) => value>=0, 'vise od 0');
+ValidationRules.ensureObject().satisfies(a => a.title.length > 5).withMessage('krka').on(Book);
