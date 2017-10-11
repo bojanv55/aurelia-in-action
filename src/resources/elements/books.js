@@ -35,7 +35,7 @@ export class Books {
   }
 
   bookSaved(b){
-    this.bookApi.saveBook(b).then((sb)=>this.eventAggregator.publish(`book-save-complete-${sb.Id}`));
+    this.bookApi.saveMarket(b).then((sb)=>this.eventAggregator.publish(`book-save-complete-${sb.Id}`));
   }
 
   detached(){
@@ -65,7 +65,7 @@ export class Books {
   }
 
   bind(){
-    this.bookApi.getBooks().then(savedBooks => this.books = savedBooks);
+    this.bookApi.getMarkets().then(savedBooks => this.books = savedBooks);
     this.bookApi.getGenres().then(genres => this.genres = genres);
     this.bookApi.getShelves().then(shelves => this.shelves = shelves);
   }

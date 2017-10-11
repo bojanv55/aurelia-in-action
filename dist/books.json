@@ -4,20 +4,23 @@
     "title":"Knjiga1",
     "rating":3,
     "posjeduje":false,
-    "genre":1
+    "genre":1,
+    "timesRead":0
   },
   {
     "Id":2,
     "title":"Knjiga2",
     "rating":2,
     "posjeduje":false,
-    "genre":2
+    "genre":2,
+    "timesRead":0
   },
   {
     "Id":3,
     "title":"Knjiga3",
     "rating":1,
     "posjeduje":true,
-    "genre":1
+    "genre":1,
+    "timesRead":1
   }
 ]

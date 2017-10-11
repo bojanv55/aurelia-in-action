@@ -87,7 +87,7 @@ export class EditBook{
   }
 
   cancel(){
-    this.temporaryBook = Object.assign(new Book(), this.book);
+    this.temporaryBook = Object.assign(new Bookz(), this.book);
 
     //==
     this.starRating.applyRating(this.temporaryBook.rating);
