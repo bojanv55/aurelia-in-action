@@ -1,19 +1,37 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
+import {HttpClient as NonFetchClient} from 'aurelia-http-client';
 import {inject} from 'aurelia-framework';
 
-@inject(HttpClient)
+@inject(HttpClient, NonFetchClient)
 export class BookApi {
-  constructor(httpClient) {
+  constructor(httpClient, nfc) {
     this.httpClient = httpClient;
+    this.nfc = nfc;
 
     const baseUrl = 'http://localhost:8333/api/';
 
+    this.nfc.configure(config => {
+      config.withBaseUrl("https://jsonplaceholder.typicode.com/");
+    });
+
     this.httpClient.configure(config => {
-      config.withBaseUrl(baseUrl);
+      config.withBaseUrl(baseUrl)
+        .withInterceptor({
+          request(request){
+            console.log("req", request);
+            return request;
+          },
+          response(response){
+            console.log("res", response);
+            return response;
+          }
+        });
     });
   }
 
   getShelves() {
+    //this.getStr().then(x => console.log(x));
+
     let shelves = ["Jedan", "Dva", "Tri"];
     return this.simulatedFetch(shelves);
   }
@@ -21,6 +39,12 @@ export class BookApi {
   getGenres() {
     let genres = [{id: 1, name: "Marko"}, {id: 2, name: "Neko2"}];
     return this.simulatedFetch(genres);
+  }
+
+  getStr(){
+    this.nfc.jsonp('users', 'kolbk')
+      .then(rm => {return rm.response; })
+      .then(shit => { return shit; });
   }
 
   addMarket(market) {
