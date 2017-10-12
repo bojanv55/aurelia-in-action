@@ -1,0 +1,25 @@
+<template>
+  <require from="./heading.html"></require>
+  <heading text.bind="'betradar markets'"></heading>
+
+  <div class="card">
+    <table show.bind="markets" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>title</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr repeat.for="m of markets">
+        <td>${m.Id}</td>
+        <td>${m.title}</td>
+        <td>
+          <a class="btn btn-secondary" route-href="route: market-detail; params.bind: {Id: m.Id}">Details</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
