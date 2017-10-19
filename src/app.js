@@ -12,15 +12,20 @@ export class App {
     config.addPreActivateStep(step);
 
     config.mapUnknownRoutes((instruction) => {
-      return { route:"not-found", moduleId: PLATFORM.moduleName("./resources/elements/not-found.html") };
+      let path = instruction.fragment.toLowerCase();
+      if(path.includes('admin')){
+        return PLATFORM.moduleName("resources/elements/not-found-admin.html");
+      }
+      return PLATFORM.moduleName("resources/elements/not-found.html");
     });
 
     config.market = 'b';
     config.map([
-      {route: ["", "home"], name: 'home', moduleId: PLATFORM.moduleName("./resources/elements/index"), title: "home", nav:true, settings: {icon: 'home'} },
-      {route: "markets", name: 'markets', moduleId: PLATFORM.moduleName("./resources/elements/books"), title: "markets", nav:true },
-      {route: "markets2", name: "markets2", moduleId: PLATFORM.moduleName("./resources/elements/markets"), title: "markets2", nav:true, settings: {icon: 'users'}},
-      {route: "markets2/:Id/details", name:"market-detail", moduleId: PLATFORM.moduleName("./resources/elements/market-details"), title: "market details"},
+      {route: ["", "home"], name: 'home', moduleId: PLATFORM.moduleName("resources/elements/index"), title: "home", nav:true, settings: {icon: 'home'} },
+      {route: "markets", name: 'markets', moduleId: PLATFORM.moduleName("resources/elements/books"), title: "markets", nav:true },
+      {route: "markets2", name: "markets2", moduleId: PLATFORM.moduleName("resources/elements/markets"), title: "markets2", nav:true, settings: {icon: 'users'}},
+      {route: "legacy-markets2", redirect: "markets2" },
+      {route: "markets2/:Id/details", name:"market-detail", moduleId: PLATFORM.moduleName("resources/elements/market-details"), title: "market details"},
       {
         route: ["mrkt"],
         name: "mrkt",
