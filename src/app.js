@@ -21,15 +21,22 @@ export class App {
 
     config.market = 'b';
     config.map([
-      {route: ["", "home"], name: 'home', moduleId: PLATFORM.moduleName("resources/elements/index"), title: "home", nav:true, settings: {icon: 'home'} },
-      {route: "markets", name: 'markets', moduleId: PLATFORM.moduleName("resources/elements/books"), title: "markets", nav:true },
-      {route: "markets2", name: "markets2", moduleId: PLATFORM.moduleName("resources/elements/markets"), title: "markets2", nav:true, settings: {icon: 'users'}},
+      {route: ["", "home"], name: 'home', moduleId: PLATFORM.moduleName("resources/elements/index"), title: "home", nav:true, settings: {icon: 'home'}, layoutViewModel: PLATFORM.moduleName('main-layout') },
+      {route: "markets", name: 'markets', moduleId: PLATFORM.moduleName("resources/elements/books"), title: "markets", nav:true, layoutViewModel: PLATFORM.moduleName('main-layout') },
+      {route: "markets2", name: "markets2", moduleId: PLATFORM.moduleName("resources/elements/markets"), title: "markets2", nav:true, settings: {icon: 'users'}, layoutViewModel: PLATFORM.moduleName('main-layout') },
       {route: "legacy-markets2", redirect: "markets2" },
-      {route: "markets2/:Id/details", name:"market-detail", moduleId: PLATFORM.moduleName("resources/elements/market-details"), title: "market details"},
+      {route: "markets2/:Id/details", name:"market-detail", moduleId: PLATFORM.moduleName("resources/elements/market-details"), title: "market details", layoutViewModel: PLATFORM.moduleName('main-layout')},
       {
         route: ["mrkt"],
         name: "mrkt",
         navigationStrategy: this.customOne
+      },
+      {
+        route: 'login',
+        name: 'login',
+        moduleId: PLATFORM.moduleName('resources/elements/login.html'),
+        title: 'login',
+        layoutView: PLATFORM.moduleName('login-layout.html')
       }
     ]);
   }
