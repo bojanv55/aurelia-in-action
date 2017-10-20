@@ -34,7 +34,7 @@ export class App {
       {
         route: 'login',
         name: 'login',
-        moduleId: PLATFORM.moduleName('resources/elements/login.html'),
+        moduleId: PLATFORM.moduleName('resources/elements/login'),
         title: 'login',
         layoutView: PLATFORM.moduleName('login-layout.html')
       }

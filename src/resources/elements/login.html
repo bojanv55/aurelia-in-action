@@ -8,12 +8,12 @@
         <div class="card-header">
           <h1>login</h1>
         </div>
-        <form class="card-block form-inline">
+        <form class="card-block form-inline" submit.trigger="login()">
           <label class="sr-only" for="userName">email</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon">@</div>
             <input type="text"
-                   class="form-control"
+                   class="form-control" value.bind="username"
                    id="userName" placeholder="email">
           </div>
           <label class="sr-only" for="password">password</label>
@@ -21,6 +21,7 @@
             <input type="password"
                    class="form-control"
                    id="password"
+                   value.bind="password"
                    placeholder="password">
           </div>
           <button type="submit"
