@@ -24,10 +24,13 @@
                    value.bind="password"
                    placeholder="password">
           </div>
-          <button type="submit"
+          <button type="submit" disabled.bind="!(username.length>0 && password.length>0)"
                   class="btn btn-success">login
           </button>
         </form>
+        <div class="card card-outline-danger text-center" show.bind="errorMessage.length>0">
+          <div class="card-block login-error">${errorMessage}</div>
+        </div>
         <div class="card-footer text-muted">
           welcome back to my-books
         </div>

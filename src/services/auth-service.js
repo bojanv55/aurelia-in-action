@@ -6,11 +6,36 @@ export class AuthService {
   constructor(http) {
     this.http = http;
 
-    const baseUrl = 'http://localhost:8333/api/';
+    //not needed since global stuff is configured for this in app.js
+    // const baseUrl = 'http://localhost:8333/api/';
+    //
+    // this.http.configure(config => {
+    //   config.withBaseUrl(baseUrl);
+    // });
+  }
 
-    this.http.configure(config => {
-      config.withBaseUrl(baseUrl);
-    });
+  get tokenInterceptor() {
+    let auth = this;
+    return {
+      request(request) {
+        let token = auth.getToken();
+        if (token) {
+          request.headers.append('authorization', `bearer ${token}`);
+        }
+        return request;
+      }
+    };
+  }
+
+  isLoggedIn(){
+    let token  = this.getToken();
+
+    if(token) return true;
+    return false;
+  }
+
+  getToken(){
+    return window.localStorage.getItem("token");
   }
 
   login(username, password) {
