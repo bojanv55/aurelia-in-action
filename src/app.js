@@ -70,6 +70,15 @@ export class App {
         settings: {icon: 'users', auth:true, admin:true},
         layoutViewModel: PLATFORM.moduleName('main-layout')
       },
+      {
+        route: "photo",
+        name: "photo",
+        moduleId: PLATFORM.moduleName("resources/elements/photo"),
+        title: "photo",
+        nav: true,
+        settings: {icon: 'users', auth:true },
+        layoutViewModel: PLATFORM.moduleName('main-layout')
+      },
       {route: "legacy-markets2", redirect: "markets2"},
       {
         route: "markets2/:Id/details",

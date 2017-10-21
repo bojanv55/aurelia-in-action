@@ -1,0 +1,21 @@
+<template>
+  <h1>pht</h1>
+  <!--
+  <video ref="video" id="video" width="640" height="480" autoplay></video>
+  <button id="snap" click.delegate="snap()">Snap Photo</button>
+  <canvas ref="canvas" id="canvas" width="640" height="480"></canvas>
+  -->
+  <div id="photo">
+    <video ref="player" id="player" width=320 height=240 autoplay></video>
+    <canvas ref="canvas" id="canvas" width=320 height=240></canvas>
+  </div>
+
+  <div class="btn-group">
+    <a href="#" class="btn btn-success" click.delegate="startCamera()">Change</a>
+    <a href="#" class="btn btn-success" click.delegate="capture()">Capture</a>
+    <label class="btn btn-primary">
+      Browse… <input type="file" accept="image/*" name="file" ref="file" change.delegate="loadPhoto()" style="display: none;">
+    </label>
+  </div>
+
+</template>

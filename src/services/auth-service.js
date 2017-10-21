@@ -39,18 +39,23 @@ export class AuthService {
   }
 
   login(username, password) {
-    return this.http.fetch('token', {
-      method: 'post',
-      body: json({username: username, passowrd: password})
-    })
-      .then(res => res.json())
-      .then(tokRes => {
-        if (tokRes.success){
-          window.localStorage.setItem('token', tokRes.token);
-        }
-        return tokRes;
-      })
-      .catch(err => console.log('Token error'));
+    // return this.http.fetch('token', {
+    //   method: 'post',
+    //   body: json({username: username, passowrd: password})
+    // })
+    //   .then(res => res.json())
+    //   .then(tokRes => {
+    //     if (tokRes.success){
+    //       window.localStorage.setItem('token', tokRes.token);
+    //     }
+    //     return tokRes;
+    //   })
+    //   .catch(err => console.log('Token error'));
+
+    window.localStorage.setItem('token', 'simul');
+    return new Promise((resolve, reject) => {
+      resolve({success:true});
+    });
   }
 
   logout(){
