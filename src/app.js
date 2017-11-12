@@ -71,6 +71,15 @@ export class App {
         layoutViewModel: PLATFORM.moduleName('main-layout')
       },
       {
+        route: "partial",
+        name: "partial",
+        moduleId: PLATFORM.moduleName("resources/elements/partial-shit"),
+        title: "partial",
+        nav: true,
+        settings: {icon: 'users', auth:true },
+        layoutViewModel: PLATFORM.moduleName('main-layout')
+      },
+      {
         route: "photo",
         name: "photo",
         moduleId: PLATFORM.moduleName("resources/elements/photo"),

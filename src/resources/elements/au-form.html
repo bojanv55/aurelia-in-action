@@ -1,0 +1,11 @@
+<template>
+  <form class="form card" submit.trigger="addBook()">
+    <div class="card-block">
+      <div class="form-group">
+        <div repeat.for="field of fields">
+          <compose containerless view-model="${field.controlType}" model.bind="field"></compose>
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
