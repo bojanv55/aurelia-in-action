@@ -11,6 +11,18 @@ export function configure(aurelia) {
     .standardConfiguration()
     .feature(PLATFORM.moduleName('resources/index'))
     .plugin(PLATFORM.moduleName('aurelia-validation'));
+    //.plugin(PLATFORM.moduleName('aurelia-html-import-template-loader'));
+  //npm install [aurelia-html...] --save (dodaje u .json package file)
+
+  aurelia.use
+    .plugin(PLATFORM.moduleName('aurelia-dialog'), config => {
+      config.useDefaults();
+      config.settings.lock = true;
+      config.settings.centerHorizontalOnly = false;
+      config.settings.startingZIndex = 5;
+    });
+
+  //aurelia.use.plugin(PLATFORM.moduleName('aurelia-html-import-template-loader'));
 
   // Uncomment the line below to enable animation.
   // aurelia.use.plugin(PLATFORM.moduleName('aurelia-animator-css'));

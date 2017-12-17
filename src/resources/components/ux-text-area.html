@@ -1,0 +1,13 @@
+<template>
+  <style>
+    .text-area{
+      position:relative;
+    }
+  </style>
+  <div class="text-area" show.bind="editMode">
+    <textarea ref="element" rows="${rows}" value.bind="textContentTemp" class="box-sizing-border"></textarea>
+    <button class="cancel btn btn-danger" click.delegate="cancel()">cancel</button>
+    <button class="ok btn btn-success" click.delegate="ok()">ok</button>
+  </div>
+  <p class="text-block" click.delegate="edit()" show.bind="!editMode">${textContent}</p>
+</template>

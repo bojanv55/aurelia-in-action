@@ -1,16 +1,19 @@
 import {bindable, inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
+import {DialogService} from 'aurelia-dialog';
+import {ShareBook} from './share-book';
 
-@inject(EventAggregator)
+@inject(EventAggregator, DialogService)
 export class Book{
   @bindable book;
   @bindable searchTerm;
   @bindable shelves;
   @bindable genres;
 
-  constructor(eventAggregator){
+  constructor(eventAggregator, dialogService){
     this.eventAggregator = eventAggregator;
     this.editMode = false;
+    this.dialogService = dialogService;
   }
 
   markRead(){
@@ -24,6 +27,15 @@ export class Book{
 
   toggleEditMode(){
     this.editMode = !this.editMode;
+  }
+
+  share(){
+    this.dialogService.open(
+      {
+        viewModel: ShareBook,
+        model: this.book
+      }
+    ).whenClosed(response => {});
   }
 
   bind(){
