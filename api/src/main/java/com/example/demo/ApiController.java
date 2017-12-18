@@ -14,11 +14,25 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api")
 public class ApiController {
 
+  @CrossOrigin
+  @RequestMapping(method = RequestMethod.GET, path = "countries")
+  Collection<Country> countries() {
+    Country country1 = new Country();
+    country1.setCode("code1");
+    country1.setName("name1");
+    Country country2 = new Country();
+    country2.setCode("code1");
+    country2.setName("name1");
+    return Arrays.asList(country1, country2);
+  }
 
   @CrossOrigin
   @RequestMapping(method = RequestMethod.GET, path = "markets")
   Collection<Market> markets() {
     System.out.println("get markets");
+    Country country = new Country();
+    country.setCode("code1");
+    country.setName("name1");
     Market m1 = new Market();
     m1.setId(1);
     m1.setTitle("title1");
@@ -26,6 +40,7 @@ public class ApiController {
     m1.setPosjeduje(false);
     m1.setTimesRead(0);
     m1.setRating(3);
+    m1.setCountry(country);
     Market m2 = new Market();
     m2.setId(2);
     m2.setTitle("title2");
@@ -33,6 +48,7 @@ public class ApiController {
     m2.setPosjeduje(false);
     m2.setTimesRead(0);
     m2.setRating(3);
+    m2.setCountry(country);
     return Arrays.asList(m1, m2);
   }
 

@@ -17,6 +17,23 @@ export class MarketDetails{
     });
   }
 
+  loadMarketN(name){
+    this.marketApi.getMarkets().then(markets => {
+      this.market = markets.find(m => m.title == name);
+    });
+  }
+
+  loadMarketZ(name){
+    this.loadMarketN(name);
+  this.marketApi.loadCountry(this.market.country).then(country => {
+    this.selected = country.code ? {"name" : country.name, "code" : country.code} : {"name": 'Australia', "code" : 'AU'};
+  });
+  }
+
+  countryChanged(evt){
+    this.market.country = evt.target.value;
+  }
+
   saveMarket(){
     console.log("saved")
   }

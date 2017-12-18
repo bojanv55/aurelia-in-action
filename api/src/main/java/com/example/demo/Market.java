@@ -9,6 +9,7 @@ public class Market {
   boolean posjeduje;
   int genre;
   int timesRead;
+  Country country;
 
   @JsonProperty("Id")
   public int getId() {
@@ -57,6 +58,14 @@ public class Market {
 
   public void setTimesRead(int timesRead) {
     this.timesRead = timesRead;
+  }
+
+  public Country getCountry() {
+    return country;
+  }
+
+  public void setCountry(Country country) {
+    this.country = country;
   }
 
   @Override

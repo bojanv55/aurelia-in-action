@@ -18,8 +18,10 @@
     "aurelia-polyfills": "latest",
     "aurelia-validation": "^1.1.2",
     "bluebird": "^3.4.1",
+    "jquery": "^3.2.1",
     "lodash": "^4.17.4",
-    "moment": "^2.19.0"
+    "moment": "^2.19.0",
+    "selectize": "^0.12.4"
   },
   "peerDependencies": {},
   "devDependencies": {

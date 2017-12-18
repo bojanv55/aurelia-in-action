@@ -1,4 +1,6 @@
 <template>
+  <require from="../attributes/au-selectize"></require>
+  <require from="selectize/dist/css/selectize.default.css"></require>
   <form if.bind="market" class="form-card" submit.trigger="saveMarket()">
     <div class="card-block">
       <h4 class="card-title">Market details <i class="fa fa-user"></i> </h4>
@@ -7,6 +9,18 @@
       <div class="form-group">
         <label for="title">Title</label>
         <input id="title" name="title" class="form-control" placeholder="enter title" value.bind="market.title">
+        <label for="select-country">Counter</label>
+        <div class="row no-gutter">
+          <div class="col-md-3">
+            <select id="select-country" if.bind="selected"
+                    au-selectize="url:countries; valueField:code; labelField: name; searchField:name; selected.bind: selected"
+                    class="demo-default" placeholder="Sel.." change.delegate="countryChanged($event)">
+              <option value.bind="selected.code">
+                ${selected.name}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="card-footer">
         <a class="btn btn-secondary col-sm-2" route-href="route: markets2"><i class="fa fa-arrow-left"></i>back </a>
