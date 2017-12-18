@@ -10,7 +10,8 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .feature(PLATFORM.moduleName('resources/index'))
-    .plugin(PLATFORM.moduleName('aurelia-validation'));
+    .plugin(PLATFORM.moduleName('aurelia-validation'))
+    .plugin(PLATFORM.moduleName('aurelia-animator-css'));
     //.plugin(PLATFORM.moduleName('aurelia-html-import-template-loader'));
   //npm install [aurelia-html...] --save (dodaje u .json package file)
 

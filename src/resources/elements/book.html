@@ -3,7 +3,7 @@
   <require from="../value-converters/book-status"></require>
   <require from="../value-converters/search-bold"></require>
   <require from="../value-converters/istakni"></require>
-  <li class="${book.read ? 'read-book' : ''} list-group-item">
+  <li class="${book.read ? 'read-book' : ''} list-group-item au-animate">
     <div class="book col-12">
       <div class="book-options form-inline">
         <div class="col-lg-7 col-md-2" innerhtml.bind="book.title | searchBold:searchTerm | istakni"></div>

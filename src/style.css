@@ -193,6 +193,14 @@ li.read-book{
   animation: fadeOut 0.5s;
 }
 
+.fade-in.aurelia-hide-add{
+  animation: fadeOut 2.9s ease-out;
+}
+
+.fade-in.aurelia-hide-remove{
+  animation: fadeIn 2.9s ease-out;
+}
+
 @-webkit-keyframes fadeIn {
   0%   { opacity: 0; }
   100% { opacity: 1; }
@@ -259,3 +267,4 @@ ul.ratings li{
   color:rgb(255, 204, 0);
 
 }
+
