@@ -13,6 +13,14 @@ export class MarketApi{
     });
   }
 
+  loadCountry(country){
+    return this.httpClient.fetch(`countries`)
+      .then(res => res.json())
+      .then(count => count.find(c => c.code == country.code))
+      .catch(err => {
+      })
+  }
+
   addMarket(market) {
     return this.httpClient.fetch('markets', {
       method: 'post',

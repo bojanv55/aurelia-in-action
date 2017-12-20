@@ -90,7 +90,7 @@ export class App {
       },
       {route: "legacy-markets2", redirect: "markets2"},
       {
-        route: "markets2/:Id/details",
+        route: "markets2/:title/details",
         name: "market-detail",
         moduleId: PLATFORM.moduleName("resources/elements/market-details"),
         title: "market details",

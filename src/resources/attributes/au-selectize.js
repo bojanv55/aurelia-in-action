@@ -2,7 +2,7 @@ import selectize from 'selectize';
 import {dynamicOptions, inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
 
-@dynamicOptions()
+@dynamicOptions
 @inject(Element, HttpClient)
 export class AuSelectizeCustomAttribute {
   constructor(element, http) {

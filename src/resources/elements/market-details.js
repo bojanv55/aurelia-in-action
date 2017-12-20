@@ -3,12 +3,13 @@ import {MarketApi} from '../../services/market-api';
 
 @inject(MarketApi)
 export class MarketDetails{
+
   constructor(marketApi){
     this.marketApi = marketApi;
   }
 
   activate(params, routeConfig){
-    this.loadMarket(params.Id)
+    this.loadMarketZ(params.title)
   }
 
   loadMarket(id){
@@ -23,11 +24,15 @@ export class MarketDetails{
     });
   }
 
-  loadMarketZ(name){
-    this.loadMarketN(name);
-  this.marketApi.loadCountry(this.market.country).then(country => {
-    this.selected = country.code ? {"name" : country.name, "code" : country.code} : {"name": 'Australia', "code" : 'AU'};
-  });
+  loadMarketZ(name) {
+    this.marketApi.getMarkets()
+      .then(markets => {
+        this.market = markets.find(m => m.title == name);
+
+        this.marketApi.loadCountry(this.market.country).then(country => {
+          this.selected = country.code ? {"name": country.name, "code": country.code} : {"name": 'Australia', "code": 'AU'};
+        });
+      });
   }
 
   countryChanged(evt){
