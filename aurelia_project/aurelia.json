@@ -50,13 +50,13 @@
   },
   "unitTestRunner": [
     {
-      "id": "none",
-      "displayName": "None"
+      "id": "karma",
+      "displayName": "Karma"
     }
   ],
   "integrationTestRunner": {
-    "id": "none",
-    "displayName": "None"
+    "id": "protractor",
+    "displayName": "Protractor"
   },
   "paths": {
     "root": "src",
@@ -65,5 +65,9 @@
     "attributes": "resources/attributes",
     "valueConverters": "resources/value-converters",
     "bindingBehaviors": "resources/binding-behaviors"
+  },
+  "testFramework": {
+    "id": "jasmine",
+    "displayName": "Jasmine"
   }
 }
