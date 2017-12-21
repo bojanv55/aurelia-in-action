@@ -1,4 +1,4 @@
-import {useShadowDOM, bindable} from 'aurelia-framework';
+import {bindable, useShadowDOM} from "aurelia-framework";
 
 @useShadowDOM()
 export class UxTextArea {
@@ -9,12 +9,13 @@ export class UxTextArea {
     this.editMode = false;
   }
 
-  bind() {
+  bind(){
     this.textContentTemp = this.textContent;
   }
 
   edit() {
     this.editMode = true;
+
     setTimeout(_ => {
       this.element.focus();
     }, 1);

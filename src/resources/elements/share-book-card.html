@@ -1,6 +1,6 @@
 <template bindable="book">
   <require from="../components/ux-card.html"></require>
-  <require from="../components/ux-text-area.html"></require>
+  <require from="../components/ux-text-area"></require>
 
   <ux-card class="ux-card">
     <div slot="card-image">
@@ -10,10 +10,10 @@
       <i class="fa fa-share-alt" aria-hidden="true"></i> ${book.title}
     </h4>
     <h6 slot="sub-title">Author
-      <a href.bind="book.authorBioUrl">${book.author}</a>
+      <a href.bind="book.title">${book.title}</a>
     </h6>
     <div slot="card-text">
-      <ux-text-area text-content.bind="book.description" rows.bind="11"></ux-text-area>
+      <ux-text-area text-content.bind="book.title" rows.bind="11"></ux-text-area>
     </div>
     <div slot="card-footer" class="row">
       footer component
